@@ -1,0 +1,73 @@
+body {
+    background-color: #edcab7;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.header-container {
+    position: relative;
+}
+
+.header-img-1 {
+    position: relative;
+
+
+    background-image: url('images/Travel-Background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
+.header-img-2 {
+    position: relative;
+
+    top: -365px;
+
+
+    background-image: url('images/Harry\'s\ Van.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.header-title h1 {
+    font-family: 'Yeseva One';
+    font-size: 158px;
+    color: #5c4941;
+    padding-left: 16px;
+    margin: 0px;
+}
+
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+    padding: 50px;
+}
+
+.question-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+    background-color: lightgreen;
+    border-radius: 12px;
+    height: 100px;
+}
+
+.question-box:nth-child(1) {
+    background-image: url('images/forms-background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.question-box:nth-child(2) {
+    background-image: url('images/Palawan-Background.png');
+    background-size: cover;
+    background-position: center;
+}
