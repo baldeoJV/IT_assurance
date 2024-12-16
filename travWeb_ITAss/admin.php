@@ -51,6 +51,12 @@
 ?>
 
 <style>
+    .table-container {
+        max-height: 400px;
+        overflow-y: auto; /* Enable vertical scrolling */
+        width: 90%; /* You can set a specific width or use percentage */
+        margin: auto; /* Center the table container */
+    }
     tr:nth-child(even) {
         background-color: #D6EEEE;
     }
@@ -90,45 +96,47 @@
 <!-- [DROP BUTTON] end drop down table -->
 
 <!-- [DISPLAY] start table -->
-    <table>
-        <thead>
-            <tr>
-                <!--create number of columns identical to the number of columns of the table + the action column-->
-                <?php foreach ($columns as $column): ?>
-                    <?php if ($column !== 'id'): ?> <!-- Skip the 'id' column -->
-                        <th><?= htmlspecialchars($column); ?></th>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-                <th> Action </th>
-            </tr>
-        </thead>
-
-        <tbody>
-        <!-- if there is not fetched data, just display "No data"-->
-            <?php if (empty($rows)): ?> 
+    <div class="table-container">
+        <table>
+            <thead>
                 <tr>
-                    <td colspan=100% style="text-align:center">No Data</td>
+                    <!--create number of columns identical to the number of columns of the table + the action column-->
+                    <?php foreach ($columns as $column): ?>
+                        <?php if ($column !== 'id'): ?> <!-- Skip the 'id' column -->
+                            <th><?= htmlspecialchars($column); ?></th>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    <th> Action </th>
                 </tr>
+            </thead>
 
-            <?php else: ?>
-            <!-- display the fetched data using for loops -->
-                <?php foreach ($rows as $row): ?>
+            <tbody>
+            <!-- if there is not fetched data, just display "No data"-->
+                <?php if (empty($rows)): ?> 
                     <tr>
-                        <?php foreach ($columns as $column): ?>
-                            <?php if ($column !== 'id'): ?> <!-- Skip the 'id' column -->
-                                <td><?= htmlspecialchars($row[$column]); ?></td>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                        <td>
-                            <a href="?table_name=<?= urlencode($tableName); ?>&edit=<?= $row['id']; ?>">Edit</a> |
-                            <a href="?table_name=<?= urlencode($tableName); ?>&del=<?= $row['id']; ?>">Delete</a>
-                        </td>
+                        <td colspan=100% style="text-align:center">No Data</td>
                     </tr>
-                <?php endforeach; ?>
-            <!-- end of for loop -->
-            <?php endif; ?>
-        </tbody>
-    </table>
+
+                <?php else: ?>
+                <!-- display the fetched data using for loops -->
+                    <?php foreach ($rows as $row): ?>
+                        <tr>
+                            <?php foreach ($columns as $column): ?>
+                                <?php if ($column !== 'id'): ?> <!-- Skip the 'id' column -->
+                                    <td><?= htmlspecialchars($row[$column]); ?></td>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            <td>
+                                <a href="?table_name=<?= urlencode($tableName); ?>&edit=<?= $row['id']; ?>">Edit</a> |
+                                <a href="?table_name=<?= urlencode($tableName); ?>&del=<?= $row['id']; ?>">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <!-- end of for loop -->
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 <!-- [DISPLAY] end table    -->
 
 <!--Forms... -->
