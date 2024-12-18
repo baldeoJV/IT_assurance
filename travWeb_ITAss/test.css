@@ -1,6 +1,6 @@
 /* This selector establishes the whole basis of the website */
 body {
-    background-color: #b7e2ed  ;
+    background-color: #b7e2ed;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -44,8 +44,18 @@ body {
     color: #5c4941;
     padding-left: 52px;
     margin: 0px;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+  
 .header-title h1:nth-child(2) {
     position: relative;
     top: -40px;
@@ -98,6 +108,31 @@ body {
     background-size: cover;
     background-position: center;
 }
+
+.question-box:nth-child(5) {
+    background-image: url('images/Beach_Volleyball.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.question-box:nth-child(6) {
+    background-image: url('images/historical-sites-colosseum.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.question-box:nth-child(7) {
+    background-image: url('images/Fishing-Spot.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.question-box:nth-child(8) {
+    background-image: url('images/Road_Trip.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 
 .question-box h3 {
     position: absolute;
