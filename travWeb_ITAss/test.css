@@ -9,23 +9,27 @@ body {
 
 .header-container {
     position: relative;
+    width: 100%;
+    height: 1000px;
 }
 
 .header-img-1 {
-    position: relative;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 
-
-    background-image: url('images/Travel-Background.jpg');
+    background-image: url('images/Sand\ In\ a\ Car.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; /* Prevent the image from repeating */
 }
 
 .header-img-2 {
-    position: relative;
-
-    top: -365px;
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
     background-image: url('images/Harry\'s\ Van.png');
     background-size: cover;
@@ -34,22 +38,27 @@ body {
 
 .header-title h1 {
     font-family: 'Yeseva One';
-    font-size: 158px;
+    font-size: 220px;
     color: #5c4941;
-    padding-left: 16px;
+    padding-left: 52px;
     margin: 0px;
 }
 
+.header-title h1:nth-child(2) {
+    position: relative;
+    top: -40px;
+}
 
 .form-container {
     display: flex;
     flex-direction: column;
+    align-content: center;
 
-    gap: 12px;
     padding: 50px;
 }
 
 .question-box {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,6 +67,8 @@ body {
     background-color: lightgreen;
     border-radius: 12px;
     height: 100px;
+    margin: 12px;
+    transition: height 0.5s;
 }
 
 .question-box:nth-child(1) {
@@ -67,7 +78,52 @@ body {
 }
 
 .question-box:nth-child(2) {
-    background-image: url('images/Palawan-Background.png');
+    background-image: url('images/Rock_Climbing.jpg');
     background-size: cover;
     background-position: center;
+}
+
+.question-box:nth-child(3) {
+    background-image: url('images/Surfing.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.question-box h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    color: #fff;
+    margin: 0;
+    opacity: 0;
+    transition: top 0.5s, left 0.5s, opacity 0.5s;
+}
+
+.question-box p {
+    position: absolute;
+    top: 25px;
+    left: 0px;
+
+    color: #fff;
+    margin: 0;
+    opacity: 0;
+    transition: top 0.5s, left 0.5s, opacity 0.5s;
+}
+
+.question-box:hover {
+    height: 500px;
+    cursor: pointer;
+}
+
+.question-box:hover h3{
+    opacity: 1;
+    top: 25px;
+    left: 25px;
+}
+
+.question-box:hover p {
+    opacity: 1;
+    top: 60px;
+    left: 50px;
 }
