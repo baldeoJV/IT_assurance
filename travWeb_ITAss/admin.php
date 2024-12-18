@@ -27,7 +27,6 @@
     // [READ] Fetch the data [rows] of the selected table
         $dataQuery = $pdo->query("SELECT * FROM $selectedTable");
         $rows = $dataQuery->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <!--[CREATE] again 90% chatgpt algorithm 10% mine :< -->
