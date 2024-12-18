@@ -51,7 +51,8 @@
         $ed = $_GET['edit']; 
 
         $sql = "SELECT id, firstname, middlename, lastname FROM personal_data WHERE id = :id"; 
-        $stmt = $pdo->prepare($sql); $stmt->execute(['id' => $ed]); 
+        $stmt = $pdo->prepare($sql); 
+        $stmt->execute(['id' => $ed]); 
         $rows1 = $stmt->fetchAll(); 
         foreach ($rows1 as $row2) { 
             $ln = $row2['lastname']; 
