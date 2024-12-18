@@ -1,5 +1,6 @@
+/* This selector establishes the whole basis of the website */
 body {
-    background-color: #edcab7;
+    background-color: #b7e2ed  ;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -7,6 +8,7 @@ body {
     box-sizing: border-box;
 }
 
+/* Header Section Start */
 .header-container {
     position: relative;
     width: 100%;
@@ -48,7 +50,9 @@ body {
     position: relative;
     top: -40px;
 }
+/* Header Section End */
 
+/* Question Section Start */
 .form-container {
     display: flex;
     flex-direction: column;
@@ -85,6 +89,12 @@ body {
 
 .question-box:nth-child(3) {
     background-image: url('images/Surfing.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.question-box:nth-child(4) {
+    background-image: url('images/Airplane.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -127,3 +137,4 @@ body {
     top: 60px;
     left: 50px;
 }
+/* Question Section End */
