@@ -46,7 +46,7 @@
         }
     }  
 
-// [CREATE]
+// [CREATE] submit the data
     if (isset($_POST['submit'])) {
 
         // Build the SQL query dynamically
@@ -67,7 +67,7 @@
         }
     }
 
-// [UPDATE]  
+// [UPDATE] update the data
 
     //fetch the data from table to text field
     if (isset($_GET['edit'])) { 
@@ -95,7 +95,7 @@
         }
     }
 
-    // update the record
+    // update the record in the database
     if (isset($_POST['update'])) {
         // Get the ID from the hidden input
         if (isset($_POST['id'])) {
