@@ -24,38 +24,194 @@
 
     <!-- Question Section Start -->
     <div class="form-container">
-        <div class="question-box">
-            <h3>Question 1</h3>
-            <p>How do you prefer to spend your vacation?</p>
-        </div>
-        <div class="question-box">
-            <h3>Question 2</h3>
-            <p>How do you feel about trying new and challenging activities?</p>
-        </div>
-        <div class="question-box">
-            <h3>Question 3</h3>
-            <p>What pace would you prefer for your trip?</p>
-        </div>
-        <div class="question-box">
-            <h3>Question 4</h3>
-            <p>What is your preferred budget for accommodation?</p>
-        </div>
-        <div class="question-box">
-            <h3>Question 5</h3>
-            <p>What is your ideal budget for activities?</p>
-        </div>
-        <div class="question-box">
-            <h3>Question 6</h3>
-            <p>What kind of environment do you prefer?</p>
-        </div>
-        <div class="question-box">
-            <h3>Question 7</h3>
-            <p>Do you prefer a more touristy or secluded location?</p>
-        </div>
-        <div class="question-box">
-            <h3>Question 8</h3>
-            <p>How do you prefer to get around the destination?</p>
-        </div>
+        <form>
+            <!-- Question 1 -->
+            <div class="question-box">
+                <h3>Question 1</h3>
+                <p>How do you prefer to spend your vacation?</p>
+
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="q1-adventure" name="vacation_preference_q1" value="Adventure">
+                        <label for="q1-adventure">Adventure and activities (e.g. hiking, scuba diving)</label>
+                    </div>
+            
+                    <div class="option">
+                        <input type="radio" id="q1-relax" name="vacation_preference_q1" value="Relaxation">
+                        <label for="q1-relax">Relaxing on the beach/spa</label>
+                    </div>
+            
+                    <div class="option">
+                        <input type="radio" id="q1-culture" name="vacation_preference_q1" value="Culture">
+                        <label for="q1-culture">Cultural experiences</label>
+                    </div>
+            
+                    <div class="option">
+                        <input type="radio" id="q1-city" name="vacation_preference_q1" value="City">
+                        <label for="q1-city">City exploration</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="question-box">
+                <h3>Question 2</h3>
+                <p>How do you feel about trying new and challenging activities?</p>
+
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="q2-open" name="activity_preference_q2" value="Very open, the more exciting the better">
+                        <label for="q2-open">Very open, the more exciting the better</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q2-moderate" name="activity_preference_q2" value="I prefer moderate activities, nothing too extreme">
+                        <label for="q2-moderate">I prefer moderate activities, nothing too extreme</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q2-relaxed" name="activity_preference_q2" value="I prefer laid back, relaxing experience">
+                        <label for="q2-relaxed">I prefer laid back, relaxing experience</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-box">
+                <h3>Question 3</h3>
+                <p>What pace would you prefer for your trip?</p>
+
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="q3-fast" name="trip_pace_q3" value="Fast paced, exploring as much as possible">
+                        <label for="q3-fast">Fast paced, exploring as much as possible</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q3-balanced" name="trip_pace_q3" value="Balanced, mixing sightseeing with relaxation">
+                        <label for="q3-balanced">Balanced, mixing sightseeing with relaxation</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q3-slow" name="trip_pace_q3" value="Slow-paced, taking time to enjoy each place">
+                        <label for="q3-slow">Slow-paced, taking time to enjoy each place</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-box">
+                <h3>Question 4</h3>
+                <p>What is your preferred budget for accommodation?</p>
+
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="q4-budget" name="accommodation_budget_q4" value="Budget">
+                        <label for="q4-budget">Budget (hostels, budget hotels, cabins, glamping tents)</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q4-midrange" name="accommodation_budget_q4" value="Mid-range">
+                        <label for="q4-midrange">Mid-range (3 star hotel, local guest house)</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q4-luxury" name="accommodation_budget_q4" value="Luxury">
+                        <label for="q4-luxury">Luxury (4-5 star hotel / resorts)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-box">
+                <h3>Question 5</h3>
+                <p>What is your ideal budget for activities?</p>
+
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="q5-budget" name="activity_budget_q5" value="Very budget friendly">
+                        <label for="q5-budget">Very budget friendly (mostly free or low cost activities)</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q5-moderate" name="activity_budget_q5" value="Moderate">
+                        <label for="q5-moderate">Moderate (mix of free, low cost and a few paid activities)</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q5-luxury" name="activity_budget_q5" value="Higher end">
+                        <label for="q5-luxury">Higher end (luxury activities and experience)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-box">
+                <h3>Question 6</h3>
+                <p>What kind of environment do you prefer?</p>
+
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="q6-nature" name="environment_preference_q6" value="Nature & outdoors">
+                        <label for="q6-nature">Nature & outdoors (mountains, beaches, national parks)</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q6-urban" name="environment_preference_q6" value="Urban">
+                        <label for="q6-urban">Urban (cities, shopping, nightlife)</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q6-historical" name="environment_preference_q6" value="Historical">
+                        <label for="q6-historical">Historical (heritage sites, museums)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question-box">
+                <h3>Question 7</h3>
+                <p>Do you prefer a more touristy or secluded location?</p>
+
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="q7-popular" name="location_preference_q7" value="Popular">
+                        <label for="q7-popular">Popular</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q7-secluded" name="location_preference_q7" value="Off the beaten path">
+                        <label for="q7-secluded">Off the beaten path</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-box">
+                <h3>Question 8</h3>
+                <p>How do you prefer to get around the destination?</p>
+
+                <div class="options-container">
+                    <div class="option">
+                        <input type="radio" id="q8-car" name="transport_preference_q8" value="Rent a car or motorbike">
+                        <label for="q8-car">Rent a car or motorbike</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q8-public" name="transport_preference_q8" value="Public transport">
+                        <label for="q8-public">Public transport</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" id="q8-private" name="transport_preference_q8" value="Private transfers">
+                        <label for="q8-private">Private transfers</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
     </div>
     <!-- Question Section End -->
     

@@ -85,6 +85,25 @@ body {
     transition: height 0.5s;
 }
 
+/* This selector makes the background image for all the question-box darker */
+.question-box::before {
+    content: ''; /* Required for pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: 1; /* Place the overlay above the background image */
+}
+
+/* Separates text from the darkened background so that the text wont be darkened */
+.question-box > * {
+    position: relative;
+    z-index: 2; /* Ensure content is above the overlay */
+}
+
 .question-box:nth-child(1) {
     background-image: url('images/forms-background.jpg');
     background-size: cover;
@@ -133,13 +152,13 @@ body {
     background-position: center;
 }
 
-
 .question-box h3 {
     position: absolute;
     top: 0;
     left: 0;
 
     color: #fff;
+    font-size: 32px;
     margin: 0;
     opacity: 0;
     transition: top 0.5s, left 0.5s, opacity 0.5s;
@@ -147,12 +166,28 @@ body {
 
 .question-box p {
     position: absolute;
-    top: 25px;
+    top: 50px;
     left: 0px;
 
     color: #fff;
+    font-size: 24px;
     margin: 0;
     opacity: 0;
+    transition: top 0.5s, left 0.5s, opacity 0.5s;
+}
+
+.question-box .options-container {
+    position: absolute;
+    top: 100px;
+    left: 0px;
+
+    display: flex;
+    
+    color: #fff;
+    font-size: 20px;
+    margin: 0;
+    opacity: 0;
+    gap: 12px;
     transition: top 0.5s, left 0.5s, opacity 0.5s;
 }
 
@@ -169,7 +204,14 @@ body {
 
 .question-box:hover p {
     opacity: 1;
-    top: 60px;
+    top: 75px;
     left: 50px;
+}
+
+.question-box:hover .options-container {
+    opacity: 1;
+    top: 125px;
+    left: 75px;
+    flex-direction: column;
 }
 /* Question Section End */
