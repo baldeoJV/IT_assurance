@@ -46,7 +46,7 @@
         }
     }  
 
-// [CREATE]
+// [INSERT]
     if (isset($_POST['submit'])) {
 
         // Build the SQL query dynamically
@@ -330,7 +330,7 @@
         overflow: hidden; /* Prevents text overflow */
         text-overflow: ellipsis; /* Adds "..." for truncated text (if nowrap is set) */
         word-wrap: break-word; /* Breaks long words to fit within the cell */
-        white-space: normal; /* Allows text wrapping within cells */
+        white-space: normal; /*Allows text wrapping within cells */
     }
 
 
@@ -339,7 +339,6 @@
         margin: auto;
         width: 100%;
         font-family: Arial, sans-serif;
-        /* table-layout: fixed; Ensures consistent column widths */
         word-wrap: break-word; /* Ensures long words break into the next line */
         white-space: normal; /* Allows text wrapping */
     }
@@ -467,4 +466,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
-
