@@ -1,6 +1,7 @@
 /* This selector establishes the whole basis of the website */
 body {
     background-color: #b7e2ed;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     width: 100%;
