@@ -21,7 +21,7 @@ body {
     width: 100%;
     height: 100%;
 
-    background-image: url('images/Sand\ In\ a\ Car.jpg');
+    background-image: url('https://drive.google.com/thumbnail?id=1oU6cfc6Va2v-OlZxGscb5KUDrJETwf_Y&sz=w2000');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; /* Prevent the image from repeating */
@@ -34,7 +34,7 @@ body {
     width: 100%;
     height: 100%;
 
-    background-image: url('images/Harry\'s\ Van.png');
+    background-image: url('https://drive.google.com/thumbnail?id=12YclM2AtxHncjE0IWFGLIqQ1cCmTtbiP&sz=w2000');
     background-size: cover;
     background-position: center;
 }
@@ -106,49 +106,49 @@ body {
 }
 
 .question-box:nth-child(1) {
-    background-image: url('images/forms-background.jpg');
+    background-image: url('https://drive.google.com/thumbnail?id=1KOGICHqO5PeXc0SGMTS0y6pHwx1jr8CD&sz=w2000');
     background-size: cover;
     background-position: center;
 }
 
 .question-box:nth-child(2) {
-    background-image: url('images/Rock_Climbing.jpg');
+    background-image: url('https://drive.google.com/thumbnail?id=1TuwRXx1VayI-oICv0yjUft6CvLlYrqAo&sz=w2000');
     background-size: cover;
     background-position: center;
 }
 
 .question-box:nth-child(3) {
-    background-image: url('images/Surfing.jpg');
+    background-image: url('https://drive.google.com/thumbnail?id=1u7NLrbpOJn7q9IdNxLryOhHWjylgYOCu&sz=w2000');
     background-size: cover;
     background-position: center;
 }
 
 .question-box:nth-child(4) {
-    background-image: url('images/Airplane.jpg');
+    background-image: url('https://drive.google.com/thumbnail?id=1fe6qmgl-2ZUwjEPu5diKIkd7iTFnHuwv&sz=w2000');
     background-size: cover;
     background-position: center;
 }
 
 .question-box:nth-child(5) {
-    background-image: url('images/Beach_Volleyball.jpg');
+    background-image: url('https://drive.google.com/thumbnail?id=19arzVkZLd_ckJhUIHO3Jo7idPegkRzoq&sz=w2000');
     background-size: cover;
     background-position: center;
 }
 
 .question-box:nth-child(6) {
-    background-image: url('images/historical-sites-colosseum.jpg');
+    background-image: url('https://drive.google.com/thumbnail?id=1-RaH6rdHT1TtyDd931D0SQgwh1G9GtNs&sz=w2000');
     background-size: cover;
     background-position: center;
 }
 
 .question-box:nth-child(7) {
-    background-image: url('images/Fishing-Spot.jpg');
+    background-image: url('https://drive.google.com/thumbnail?id=1Ez_k7X-510_A188o4TWukMZXIg78Y1Yo&sz=w2000');
     background-size: cover;
     background-position: center;
 }
 
 .question-box:nth-child(8) {
-    background-image: url('images/Road_Trip.jpg');
+    background-image: url('https://drive.google.com/thumbnail?id=1OvaZvdynqbDisdLEagyiA5C9GdIHHvEv&sz=w2000');
     background-size: cover;
     background-position: center;
 }
