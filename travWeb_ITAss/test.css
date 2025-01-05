@@ -9,9 +9,29 @@ body {
     box-sizing: border-box;
 }
 
+.option-header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: beige;
+    height: 40px;
+    width: 100%;
+    z-index: 1;
+
+    display: flex;
+    padding: 10px;
+}
+
+.option-header button {
+    margin-left: 20px;
+    width: 100px;;
+}
+
 /* Header Section Start */
 .header-container {
     position: relative;
+    top: 60px;
+    left: 0px;
     width: 100%;
     height: 1000px;
 }
