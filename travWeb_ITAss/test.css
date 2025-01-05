@@ -72,6 +72,12 @@ body {
     padding: 50px;
 }
 
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .question-box {
     position: relative;
     display: flex;
@@ -154,32 +160,28 @@ body {
 }
 
 .question-box h3 {
-    position: absolute;
-    top: 0;
-    left: 0;
-
     color: #fff;
-    font-size: 32px;
+    font-size: 20px;
     margin: 0;
-    opacity: 0;
+    
     transition: top 0.5s, left 0.5s, opacity 0.5s;
 }
 
 .question-box p {
     position: absolute;
-    top: 50px;
+    top: 0px;
     left: 0px;
 
     color: #fff;
-    font-size: 24px;
+    font-size: 40px;
     margin: 0;
     opacity: 0;
-    transition: top 0.5s, left 0.5s, opacity 0.5s;
+    transition: top 0.5s, left 0.5s, opacity 0.25s;
 }
 
 .question-box .options-container {
     position: absolute;
-    top: 100px;
+    top: 50px;
     left: 0px;
 
     display: flex;
@@ -189,7 +191,7 @@ body {
     margin: 0;
     opacity: 0;
     gap: 12px;
-    transition: top 0.5s, left 0.5s, opacity 0.5s;
+    transition: top 0.5s, left 0.5s, opacity 0.25s;
 }
 
 .question-box:hover {
@@ -198,21 +200,20 @@ body {
 }
 
 .question-box:hover h3{
-    opacity: 1;
-    top: 25px;
-    left: 25px;
+    opacity: 0;
 }
 
 .question-box:hover p {
     opacity: 1;
-    top: 75px;
+    top: 50px;
     left: 50px;
 }
 
 .question-box:hover .options-container {
     opacity: 1;
-    top: 125px;
+    top: 40%;
     left: 75px;
     flex-direction: column;
+    gap: 16px;
 }
 /* Question Section End */
