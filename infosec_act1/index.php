@@ -57,13 +57,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Build the SQL query with filters
         $sql = "WITH city_accomodation_union AS (
-            SELECT $city.AttractionID, $city.Municipality, $city.Attraction, $city.PopularSecluded, $city.Budget, accomodations.Cost, accomodations.Type
+            SELECT $city.AttractionID, accomodations.City, $city.Municipality, $city.Attraction, $city.PopularSecluded, $city.Budget, accomodations.Cost, accomodations.Type
             FROM $city
             JOIN accomodations
             ON $city.Municipality = accomodations.Municipality
             )
 
-            SELECT city_accomodation_union.AttractionID, city_accomodation_union.Municipality, city_accomodation_union.Attraction, city_accomodation_union.PopularSecluded, city_accomodation_union.Type,
+            SELECT city_accomodation_union.AttractionID, city_accomodation_union.City, city_accomodation_union.Municipality, city_accomodation_union.Attraction, city_accomodation_union.PopularSecluded, city_accomodation_union.Type,
                 activities.ActivityName, activities.Profile, activities.TravelerPreference, activities.Pacing, activities.Environment, activities.Transportation, activities.Fee, city_accomodation_union.Cost
             FROM city_accomodation_union
             JOIN activities
@@ -432,6 +432,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             color: #666;
         }
 
+        .city_button{
+            align-items: center;
+            background-color: #fff;
+            border-radius: 12px;
+            border: 1px solid #121212 !important;
+            box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+            box-sizing: border-box;
+            color: #121212;
+            cursor: pointer;
+            display: inline-flex;
+            flex: 1 1 auto;
+            font-family: Inter,sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            justify-content: center;
+            line-height: 1;
+            margin: 0;
+            outline: none;
+            padding: 1rem 1.2rem;
+            text-align: center;
+            text-decoration: none;
+            transition: box-shadow .2s,-webkit-box-shadow .2s;
+            white-space: nowrap;
+            border: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .city_button:hover {
+            box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+        }
+
+        .submit-button{
+            margin: 12px;
+            margin-top: 20px;
+            align-items: center;
+            background-color: antiquewhite;
+            border-radius: 12px;
+            box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+            box-sizing: border-box;
+            color: #121212;
+            cursor: pointer;
+            display: inline-flex;
+            flex: 1 1 auto;
+            font-size: 1.2rem;
+            font-weight: 700;
+            justify-content: center;
+            line-height: 1;
+            outline: none;
+            padding: 1rem 1.2rem;
+            text-align: center;
+            text-decoration: none;
+            transition: box-shadow .2s,-webkit-box-shadow .2s;
+            white-space: nowrap;
+            border: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .submit-button:hover {
+            box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+        } 
+
     </style>
 </head>
 <body>
@@ -636,42 +701,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <!-- Submit Button -->
-            <button type="submit">Submit</button>
+            <button class="submit-button" role="submit">Submit</button>
         </form>
     </div>
 
-  <!-- Results Section -->
-  <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+<!-- Results Section -->
+<?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
     <div class="results-section">
         <h2>Recommended Activities Based on Your Preferences</h2>
         <?php if (!empty($all_results)): ?>
-            <div class="results-container">
-                <?php foreach ($all_results as $row): ?>
-                    <div class="activity-card">
-                        <h3><?php echo $row['ActivityName']; ?></h3>
-                        <p><strong>Location:</strong> <?php echo ($row['Municipality'] ? $row['Municipality'] . " - " . $row['Attraction'] : "Various locations"); ?></p>
-                        <p><strong>Type:</strong> <?php echo $row['Profile']; ?></p>
-                        <p><strong>Environment:</strong> <?php echo $row['Environment']; ?></p>
-                        <p><strong>Pace:</strong> <?php echo $row['Pacing']; ?></p>
-                        <p><strong>Transportation:</strong> <?php echo $row['Transportation']; ?></p>
-                        <p><strong>Fee:</strong> PHP <?php echo number_format($row['Fee'], 2); ?></p>
-                        <p><strong>Accommodation Type:</strong> <?php echo $row['Type']; ?></p>
-                        <p><strong>Accommodation Cost:</strong> PHP <?php echo number_format($row['Cost'], 2); ?></p>
+            <?php 
+            $grouped_results = [];
+            foreach ($all_results as $row) {
+                $grouped_results[$row['City']][] = $row;
+            }
+            ?>
+            <?php foreach ($grouped_results as $city_place => $results): ?>
+                <div class="city-results">
+                    <!-- button for each city -->
+                    <button class="city_button"><?php echo $city_place; ?></button>
+
+                    <!-- results container for each city -->
+                    <div class="results-container">
+                        <?php foreach ($results as $row): ?>
+                            <div class="activity-card">
+                                <h3><?php echo $row['ActivityName']; ?></h3>
+                                <p><strong>Location:</strong> <?php echo ($row['Municipality'] ? $row['Municipality'] . " - " . $row['Attraction'] : "Various locations"); ?></p>
+                                <p><strong>Type:</strong> <?php echo $row['Profile']; ?></p>
+                                <p><strong>Environment:</strong> <?php echo $row['Environment']; ?></p>
+                                <p><strong>Pace:</strong> <?php echo $row['Pacing']; ?></p>
+                                <p><strong>Transportation:</strong> <?php echo $row['Transportation']; ?></p>
+                                <p><strong>Fee:</strong> PHP <?php echo number_format($row['Fee'], 2); ?></p>
+                                <p><strong>Accommodation Type:</strong> <?php echo $row['Type']; ?></p>
+                                <p><strong>Accommodation Cost:</strong> PHP <?php echo number_format($row['Cost'], 2); ?></p>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                <?php endforeach; ?>
-            </div>
+                </div>
+                <hr>
+            <?php endforeach; ?>
         <?php else: ?>
             <div class="no-results">
                 <p>No activities found matching your preferences. Please try adjusting your filters.</p>
             </div>
         <?php endif; ?>
     </div>
-    <?php endif; ?>
+<?php endif; ?>
 
 </body>
 </html>
 
 <?php
-// Close the database connection
-$conn->close();
+    // Close the database connection
+    $conn->close();
 ?>
