@@ -109,7 +109,7 @@ a:hover { color: #FF0; }
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   border-color: black;
-  boder-right: 0;
+  border-right: 0;
 }
 .fixed-side-navbar .nav > li a:hover > span {
   color: black;
@@ -135,18 +135,65 @@ a:hover { color: #FF0; }
   letter-spacing: 0.5px;
 }
 
-
 .parallax-content {
   width: 100%;
   min-height: 100vh;
   background-size: cover;
 }
 
-
+/* Added Position Relative for lighting linear gradient */
 .baner-content {
-  padding-top: 30vh;
-  text-align: center;
+  position: relative;
   background-image: url(../img/chocolatehills.jpg);
+}
+
+/* Added lighting linear gradient on top of background */
+.baner-content::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(163, 191, 218, 0.9) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Header */
+.first-content-header {
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* Logo */
+.first-content-header div {
+  height: 50px;
+  width: 200px;
+  margin-left: 20px;
+  
+  background-image: url('https://drive.google.com/thumbnail?id=15YYgojqouP6t2n1Kz-PrNjJigrZGLbrS&sz=w2000');
+  background-size: cover;
+  background-position: center;
+}
+
+.first-content {
+  margin-left: 75px;
+  display: flex;
+  gap: 72px;
+}
+
+/* Contains the heading, description and button */
+.first-content-left {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .baner-content h1 {
@@ -154,14 +201,7 @@ a:hover { color: #FF0; }
   font-size: 128px;
   color: #fff;
   font-weight: 900;
-  text-transform: uppercase;
   margin-bottom: 0px;
-}
-
-.baner-content em {
-  color: #ff7d27;
-  font-weight: 600;
-  font-style: normal;
 }
 
 .baner-content span {
@@ -176,7 +216,61 @@ a:hover { color: #FF0; }
   margin-top: 15px;
 }
 
+/* Contains the two images and description */
+.first-content-right {
+  display: flex;
+  flex: 1;
+}
 
+.first-content-right .box-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.first-content-right  .box-container:nth-child(1) {
+  gap: 16px;
+}
+
+.first-content-right  .box-container:nth-child(1) .description {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.first-content-right  .box-container:nth-child(2) {
+  justify-content: center;
+  align-items: center;
+}
+
+.first-content-right .box {
+  position: relative;
+
+  color: #fff;
+  border: 4px solid white;
+  height: 400px;
+  width: 300px;
+  border-radius: 16px;
+}
+
+.box p {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-size: 24px;
+}
+
+.box-container:nth-child(1) .box {
+  background-image: url('https://drive.google.com/thumbnail?id=1Vx-cDPq_eifcVXpZ6TRF4GdQNveDGA_Z&sz=w2000');
+  background-size: cover;
+  background-position: center;
+}
+
+.box-container:nth-child(2) .box {
+  background-image: url('https://drive.google.com/thumbnail?id=1wuItZ9r20wRDPrIwiI4plH8iDaR7fn6E&sz=w2000');
+  background-size: cover;
+  background-position: center;
+}
 
 .service-content {
   padding-left: 15px;
@@ -489,7 +583,6 @@ footer em {
 @media (max-width: 767px){
   
   .baner-content {
-    padding-top: 30vh;
   }
 
   .baner-content h1 {
