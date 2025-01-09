@@ -16,6 +16,7 @@ if (isset($_POST['send'])) {
     $email = $_POST['email'];
     $subject = $_POST['subject'];
     $message = $_POST['message'];
+    $attachment = $_POST['attachment'];
 
     // Create a new PHPMailer instance
     $mail = new PHPMailer(true);
@@ -38,6 +39,9 @@ if (isset($_POST['send'])) {
         $mail->isHTML(true); // Enable HTML
         $mail->Subject = $subject;
         $mail->Body = nl2br($message); // Converts line breaks to <br> tags for HTML emails
+
+        // Add attachments
+        $mail->addAttachment($attachment);
 
         // Send the email
         $mail->send();

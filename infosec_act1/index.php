@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "travel_database";
+$dbname = "travel_db";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -24,7 +24,8 @@ function sanitize_input($data) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Process form submission
     $results = null;
-    $all_results = [];
+    $all_results1 = [];
+    $all_results2 = [];
 
     // Get and sanitize form inputs
     error_reporting(0);
@@ -36,6 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $environment_preference = sanitize_input($_POST['environment_preference_q6']);
     $location_preference = sanitize_input($_POST['location_preference_q7']);
     $transport_preference = sanitize_input($_POST['transport_preference_q8']); 
+    $message = "";
+    
 
     // Debug: Print sanitized input values
     // echo "<br><br>";
@@ -51,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cities = array("palawanattractions", "cebuattractions", "boholattractions", "davaoattractions", "boracayattractions");
 
     foreach ($cities as $city) {
+        $message = "Your travel preferences are as follows: ";
         // print_r($city);
         // echo "<br>";
         // echo "<br>";
@@ -135,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($results && $results->num_rows > 0) {
             while ($row = $results->fetch_assoc()) {
-                $all_results[] = $row; // Store all rows from all cities
+                $all_results1[] = $row; // Store all rows from all cities
             }
         }      
         
@@ -144,9 +148,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // echo "<br>";
     } 
 
-    if (empty($all_result)) {
+    if (empty($all_result1)) {
 
-        echo "<p>No Match. You might be interested with these: </p>";
+        $message = "No Match. You might be interested with these: ";
+        // echo "<p>No Match. You might be interested with these: </p>";
 
         foreach ($cities as $city) {
             // print_r($city);
@@ -192,7 +197,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
             if ($results && $results->num_rows > 0) {
                 while ($row = $results->fetch_assoc()) {
-                    $all_results[] = $row; // Store all rows from all cities
+                    $all_results2[] = $row; // Store all rows from all cities
                 }
             }      
             
@@ -202,6 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } 
 
       }
+    //   echo $message;
 }
 ?>
 
@@ -225,6 +231,152 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-sizing: border-box;
         }
 
+        .parallax-content {
+            width: 100%;
+            min-height: 100vh;
+            background-size: cover;
+        }
+
+        /* Added Position Relative for lighting linear gradient */
+        .baner-content {
+            position: relative;
+            background-image: url('https://drive.google.com/thumbnail?id=1bbk7HWd8vO0f0GNXPq34dkFn_q--hk8p&sz=w2000');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Added lighting linear gradient on top of background */
+        .baner-content::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(163, 191, 218, 0.9) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Header */
+        .first-content-header {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Logo */
+        .first-content-header div {
+            height: 50px;
+            width: 200px;
+            margin-left: 20px;
+
+            background-image: url('https://drive.google.com/thumbnail?id=15YYgojqouP6t2n1Kz-PrNjJigrZGLbrS&sz=w2000');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .first-content-header button {
+            margin-right: 20px;
+            width: 100px;;
+        }
+
+        .first-content {
+            margin-left: 75px;
+            display: flex;
+            gap: 72px;
+        }
+
+        /* Contains the heading, description and button */
+        .first-content-left {
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .baner-content h1 {
+            margin-top: 0px;
+            font-size: 114px;
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: 0px;
+        }
+
+        .baner-content span {
+            display: inline-block;
+            margin-top: -20px;
+            font-weight: 300;
+            font-size: 48px;
+            color: #fff;
+        }
+
+        .baner-content .primary-button {
+            margin-top: 15px;
+        }
+
+        /* Contains the two images and description */
+        .first-content-right {
+            display: flex;
+            flex: 1;
+        }
+
+        .first-content-right .box-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .first-content-right  .box-container:nth-child(1) {
+            gap: 16px;
+        }
+
+        .first-content-right  .box-container:nth-child(1) .description {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .first-content-right  .box-container:nth-child(2) {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .first-content-right .box {
+            position: relative;
+
+            color: #fff;
+            border: 4px solid white;
+            height: 400px;
+            width: 300px;
+            border-radius: 16px;
+        }
+
+        .box p {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            font-size: 24px;
+        }
+
+        .box-container:nth-child(1) .box {
+            background-image: url('https://drive.google.com/thumbnail?id=1Vx-cDPq_eifcVXpZ6TRF4GdQNveDGA_Z&sz=w2000');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box-container:nth-child(2) .box {
+            background-image: url('https://drive.google.com/thumbnail?id=1wuItZ9r20wRDPrIwiI4plH8iDaR7fn6E&sz=w2000');
+            background-size: cover;
+            background-position: center;
+        }
+
         .option-header {
             background-color: beige;
             height: 40px;
@@ -238,60 +390,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-left: 20px;
             width: 100px;;
         }
-
-        /* Header Section Start */
-        .header-container {
-            position: relative;
-            width: 100%;
-            height: 1000px;
-        }
-
-        .header-img-1 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-
-            background-image: url("C:\Users\Vernon\Downloads\sampleHeader.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat; /* Prevent the image from repeating */
-        }
-
-        .header-img-2 {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-
-            background-image: url('https://drive.google.com/thumbnail?id=12YclM2AtxHncjE0IWFGLIqQ1cCmTtbiP&sz=w2000');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .header-title h1 {
-            font-family: 'Yeseva One';
-            font-size: 220px;
-            color: #5c4941;
-            padding-left: 52px;
-            margin: 0px;
-            animation: 1s ease-out 0s 1 slideInFromLeft;
-        }
-
-        @keyframes slideInFromLeft {
-            0% {
-            transform: translateX(-100%);
-            }
-            100% {
-            transform: translateX(0);
-            }
-        }
-        
-        .header-title h1:nth-child(2) {
-            position: relative;
-            top: -40px;
-        }
-        /* Header Section End */
 
         /* Question Section Start */
         .form-container {
@@ -342,13 +440,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .question-box:nth-child(1) {
-            background-image: url('https://drive.google.com/thumbnail?id=1KOGICHqO5PeXc0SGMTS0y6pHwx1jr8CD&sz=w2000');
+            background-image: url('https://drive.google.com/thumbnail?id=1crPWG5pZF7QEDJ0ENsKdLRPNlcgurTUm&sz=w2000');
             background-size: cover;
             background-position: center;
         }
 
+
         .question-box:nth-child(2) {
-            background-image: url('https://drive.google.com/thumbnail?id=1TuwRXx1VayI-oICv0yjUft6CvLlYrqAo&sz=w2000');
+            background-image: url('https://drive.google.com/thumbnail?id=1Ayy7n1eRdBh4E-Nj8X0D0YCB3NVHZxR8&sz=w2000');
             background-size: cover;
             background-position: center;
         }
@@ -372,15 +471,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .question-box:nth-child(6) {
-            background-image: url('https://drive.google.com/thumbnail?id=1-RaH6rdHT1TtyDd931D0SQgwh1G9GtNs&sz=w2000');
+            background-image: url('https://drive.google.com/thumbnail?id=1Vx-cDPq_eifcVXpZ6TRF4GdQNveDGA_Z&sz=w2000');
             background-size: cover;
             background-position: center;
         }
 
         .question-box:nth-child(7) {
-            background-image: url('https://drive.google.com/thumbnail?id=1Ez_k7X-510_A188o4TWukMZXIg78Y1Yo&sz=w2000');
+            background-image: url('https://drive.google.com/thumbnail?id=1UxogbBFIVcfwC2GS-bmDSn6QLyH8fFwp&sz=w2000');
             background-size: cover;
             background-position: center;
+        
         }
 
         .question-box:nth-child(8) {
@@ -559,20 +659,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-        <!-- Moving Header -->
-        <div class="option-header">
-            <button onclick="window.location.href='admin.php'">Admin</button>
-        </div>
+    <div class="parallax-content baner-content" id="home">
+            <div class="first-content-container">
+                <div class="first-content-header">
+                    <div></div>
+                    <button onclick="window.location.href='admin.php'">Admin</button>
+                </div>
 
-        <!-- Header Section Start -->
-        <div class="header-container">
-            <div class="header-img-1">
-                <div class="header-title">
-                    <h1>Travel</h1>
-                    <h1>Preferences</h1>
+                <div class="first-content">
+                    <div class="first-content-left">
+                        <h1>Love the Philippines</h1>
+                        <span>Tara na sa pilipinas!</span>
+                    </div>
+                    
+                    <div class="first-content-right">
+                        <div class="box-container">
+                            <div class="box">
+                                <p>Palawan <br> <strong>Philippines</strong></p>
+                            </div>
+                            <p class="description">Palawan is a stunning province in the Philippines that offers visitors a chance to explore some of the most beautiful natural wonders in the world.</p>
+                        </div>
+
+                        <div class="box-container">
+                            <div class="box">
+                                <p>Bohol <br> <strong>Philippines</strong></p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-            <div class="header-img-2"></div>
         </div>
 
         <!-- Question Section Start -->
@@ -772,11 +888,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
         <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
             <div class="results-section">
-                <h2>Recommended Activities Based on Your Preferences</h2>
-                <?php if (!empty($all_results)): ?>
+                <?php if (!empty($all_results1)): ?>
+                    <h1 style=" margin: 1%;">Recommended Activities Based on Your Preferences</h1>
                     <?php 
                     $grouped_results = [];
-                    foreach ($all_results as $row) {
+                    foreach ($all_results1 as $row) {
                         $grouped_results[$row['City']][] = $row;
                     }
 
@@ -785,7 +901,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     ?>
                         <div class="city-results">
                             <!-- button for each city -->
-                            <button onclick="window.location.href='email.php'" 
+                            <center>
+                            <button id="<?php echo preg_replace('/[^a-zA-Z0-9]/', '_', $city_place); ?>" onclick="window.location.href='email.php?city=<?php echo urlencode($city_place); ?>'" 
                                 style="
                                     align-items: center;
                                     background-color: #fff;
@@ -802,7 +919,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     font-weight: 700;
                                     justify-content: center;
                                     line-height: 1;
-                                    margin: 0;
+                                    margin: auto; /* Center the button */
                                     outline: none;
                                     padding: 1rem 1.2rem;
                                     text-align: center;
@@ -814,7 +931,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     -webkit-user-select: none;
                                     touch-action: manipulation;">
                                     <?php echo $city_place; ?>
-                                </button>
+                            </button>
+                            </center>
+
+                            <!-- debugging...
+                            <p>Button ID: <?php //echo preg_replace('/[^a-zA-Z0-9]/', '_', $city_place); ?></p> -->
+                            
+                            <!-- </button> -->
 
                             <!-- results container for each city -->
                             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; margin-top: 30px;">
@@ -842,7 +965,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $cityHtmlContent = ob_get_clean();
 
                         // Generate a unique file name for this city
-                        $fileName = 'results_' . preg_replace('/[^a-zA-Z0-9]/', '_', $city_place) . '.html';
+                        $fileName = preg_replace('/[^a-zA-Z0-9]/', '_', $city_place) . '.html';
 
                         // Save the HTML content to the file
                         file_put_contents($fileName, $cityHtmlContent);
@@ -851,11 +974,93 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         echo $cityHtmlContent;
                     endforeach; 
                     ?>
+                
                 <?php else: ?>
-                    <div class="no-results">
-                        <p>There are no matching results for your preferences.</p>
-                        <p>You might like these instead.</p>
-                    </div>
+                    <h1 style=" margin: 1%;">Sorry we couldn't find activities that would best suit your preferences. But we found some that might pique your interest</h1>
+                    <?php 
+                    $grouped_results = [];
+                    foreach ($all_results2 as $row) {
+                        $grouped_results[$row['City']][] = $row;
+                    }
+
+                    foreach ($grouped_results as $city_place => $results): 
+                        ob_start(); // Start output buffering for each city
+                    ?>
+                        <div class="city-results">
+                            <!-- button for each city -->
+                            <center>
+                            <button id="<?php echo preg_replace('/[^a-zA-Z0-9]/', '_', $city_place); ?>" onclick="window.location.href='email.php?city=<?php echo urlencode($city_place); ?>'" 
+                                style="
+                                    align-items: center;
+                                    background-color: #fff;
+                                    border-radius: 12px;
+                                    border: 1px solid #121212 !important;
+                                    box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, .1) 0 6px 20px;
+                                    box-sizing: border-box;
+                                    color: #121212;
+                                    cursor: pointer;
+                                    display: inline-flex;
+                                    flex: 1 1 auto;
+                                    font-family: Inter, sans-serif;
+                                    font-size: 1.2rem;
+                                    font-weight: 700;
+                                    justify-content: center;
+                                    line-height: 1;
+                                    margin: auto; /* Center the button */
+                                    outline: none;
+                                    padding: 1rem 1.2rem;
+                                    text-align: center;
+                                    text-decoration: none;
+                                    transition: box-shadow .2s, -webkit-box-shadow .2s;
+                                    white-space: nowrap;
+                                    border: 0;
+                                    user-select: none;
+                                    -webkit-user-select: none;
+                                    touch-action: manipulation;">
+                                    <?php echo $city_place; ?>
+                            </button>
+                            </center>
+
+                            <!-- debugging... -->
+                            <!-- <p>Button ID: <?//php echo preg_replace('/[^a-zA-Z0-9]/', '_', $city_place); ?></p> -->
+                            
+                            <!-- </button> -->
+
+                            <!-- results container for each city -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; margin-top: 30px;">
+                                <?php foreach ($results as $row): ?>
+                                    <div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9;">
+                                        <h3 style="margin: 0; font-size: 18px; color: #333;"><?php echo $row['ActivityName']; ?></h3>
+                                        <p style="margin: 5px 0;"><strong>Location:</strong> 
+                                            <?php echo ($row['Municipality'] ? $row['Municipality'] . " - " . $row['Attraction'] : "Various locations"); ?>
+                                        </p>
+                                        <p style="margin: 5px 0;"><strong>Type:</strong> <?php echo $row['Profile']; ?></p>
+                                        <p style="margin: 5px 0;"><strong>Environment:</strong> <?php echo $row['Environment']; ?></p>
+                                        <p style="margin: 5px 0;"><strong>Pace:</strong> <?php echo $row['Pacing']; ?></p>
+                                        <p style="margin: 5px 0;"><strong>Transportation:</strong> <?php echo $row['Transportation']; ?></p>
+                                        <p style="margin: 5px 0;"><strong>Fee:</strong> PHP <?php echo number_format($row['Fee'], 2); ?></p>
+                                        <p style="margin: 5px 0;"><strong>Accommodation Type:</strong> <?php echo $row['Type']; ?></p>
+                                        <p style="margin: 5px 0;"><strong>Accommodation Cost:</strong> PHP <?php echo number_format($row['Cost'], 2); ?></p>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+
+                        <hr>
+                    <?php 
+                        // Capture the HTML for this iteration
+                        $cityHtmlContent = ob_get_clean();
+
+                        // Generate a unique file name for this city
+                        $fileName = preg_replace('/[^a-zA-Z0-9]/', '_', $city_place) . '.html';
+
+                        // Save the HTML content to the file
+                        file_put_contents($fileName, $cityHtmlContent);
+
+                        // Output the content to the browser as well
+                        echo $cityHtmlContent;
+                    endforeach; 
+                    ?>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
