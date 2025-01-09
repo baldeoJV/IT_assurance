@@ -768,7 +768,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Results Section -->
 
         <?php 
-            ob_start();
+        ob_start();
         ?>
         <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
             <div class="results-section">
@@ -779,8 +779,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     foreach ($all_results as $row) {
                         $grouped_results[$row['City']][] = $row;
                     }
+
+                    foreach ($grouped_results as $city_place => $results): 
+                        ob_start(); // Start output buffering for each city
                     ?>
-                    <?php foreach ($grouped_results as $city_place => $results): ?>
                         <div class="city-results">
                             <!-- button for each city -->
                             <button onclick="window.location.href='email.php'" 
@@ -835,26 +837,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
 
                         <hr>
-                    <?php endforeach; ?>
+                    <?php 
+                        // Capture the HTML for this iteration
+                        $cityHtmlContent = ob_get_clean();
+
+                        // Generate a unique file name for this city
+                        $fileName = 'results_' . preg_replace('/[^a-zA-Z0-9]/', '_', $city_place) . '.html';
+
+                        // Save the HTML content to the file
+                        file_put_contents($fileName, $cityHtmlContent);
+
+                        // Output the content to the browser as well
+                        echo $cityHtmlContent;
+                    endforeach; 
+                    ?>
                 <?php else: ?>
                     <div class="no-results">
-
-                        <p>There are no matching result on your preferences.</p>
+                        <p>There are no matching results for your preferences.</p>
                         <p>You might like these instead.</p>
-
-
                     </div>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
-
-        <?php 
-
-        $htmlContent = ob_get_clean();
-        // Save the content to a temporary file
-        file_put_contents('temp.html', $htmlContent);
-        echo $htmlContent;
-        ?>
 
     </body>
 </html>
