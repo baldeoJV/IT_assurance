@@ -1,6 +1,6 @@
 <?php
     $host = 'localhost';
-    $db = 'travel_db';   //change this to the name of your db
+    $db = 'travel_database';   //change this to the name of your db
     $user = 'root';
     $pass = '';
     $charset = 'utf8mb4';
