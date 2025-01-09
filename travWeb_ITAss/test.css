@@ -9,75 +9,151 @@ body {
     box-sizing: border-box;
 }
 
-.option-header {
-    background-color: beige;
-    height: 40px;
+.parallax-content {
     width: 100%;
-
-    display: flex;
-    padding: 10px;
+    min-height: 100vh;
+    background-size: cover;
 }
 
-.option-header button {
+/* Added Position Relative for lighting linear gradient */
+.baner-content {
+    position: relative;
+    background-image: url('https://drive.google.com/thumbnail?id=1bbk7HWd8vO0f0GNXPq34dkFn_q--hk8p&sz=w2000');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Added lighting linear gradient on top of background */
+.baner-content::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(163, 191, 218, 0.9) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Header */
+.first-content-header {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.first-content-header div {
+    height: 50px;
+    width: 200px;
     margin-left: 20px;
+
+    background-image: url('https://drive.google.com/thumbnail?id=15YYgojqouP6t2n1Kz-PrNjJigrZGLbrS&sz=w2000');
+    background-size: cover;
+    background-position: center;
+}
+
+.first-content-header button {
+    margin-right: 20px;
     width: 100px;;
 }
 
-/* Header Section Start */
-.header-container {
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 1000px;
+.first-content {
+    margin-left: 75px;
+    display: flex;
+    gap: 72px;
 }
 
-.header-img-1 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/* Contains the heading, description and button */
+.first-content-left {
+    position: relative;
+    z-index: 2;
 
-    background-image: url('https://drive.google.com/thumbnail?id=1oU6cfc6Va2v-OlZxGscb5KUDrJETwf_Y&sz=w2000');
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.baner-content h1 {
+    margin-top: 0px;
+    font-size: 114px;
+    color: #fff;
+    font-weight: 900;
+    margin-bottom: 0px;
+}
+
+.baner-content span {
+    display: inline-block;
+    margin-top: -20px;
+    font-weight: 300;
+    font-size: 48px;
+    color: #fff;
+}
+
+.baner-content .primary-button {
+    margin-top: 15px;
+}
+
+/* Contains the two images and description */
+.first-content-right {
+    display: flex;
+    flex: 1;
+}
+
+.first-content-right .box-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.first-content-right  .box-container:nth-child(1) {
+    gap: 16px;
+}
+
+.first-content-right  .box-container:nth-child(1) .description {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+.first-content-right  .box-container:nth-child(2) {
+    justify-content: center;
+    align-items: center;
+}
+
+.first-content-right .box {
+    position: relative;
+
+    color: #fff;
+    border: 4px solid white;
+    height: 400px;
+    width: 300px;
+    border-radius: 16px;
+}
+
+.box p {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-size: 24px;
+}
+
+.box-container:nth-child(1) .box {
+    background-image: url('https://drive.google.com/thumbnail?id=1Vx-cDPq_eifcVXpZ6TRF4GdQNveDGA_Z&sz=w2000');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; /* Prevent the image from repeating */
 }
 
-.header-img-2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background-image: url('https://drive.google.com/thumbnail?id=12YclM2AtxHncjE0IWFGLIqQ1cCmTtbiP&sz=w2000');
+.box-container:nth-child(2) .box {
+    background-image: url('https://drive.google.com/thumbnail?id=1wuItZ9r20wRDPrIwiI4plH8iDaR7fn6E&sz=w2000');
     background-size: cover;
     background-position: center;
 }
-
-.header-title h1 {
-    font-family: 'Yeseva One';
-    font-size: 220px;
-    color: #5c4941;
-    padding-left: 52px;
-    margin: 0px;
-    animation: 1s ease-out 0s 1 slideInFromLeft;
-}
-
-@keyframes slideInFromLeft {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-}
-  
-.header-title h1:nth-child(2) {
-    position: relative;
-    top: -40px;
-}
-/* Header Section End */
 
 /* Question Section Start */
 .form-container {
