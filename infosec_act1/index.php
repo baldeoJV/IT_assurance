@@ -37,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $environment_preference = sanitize_input($_POST['environment_preference_q6']);
     $location_preference = sanitize_input($_POST['location_preference_q7']);
     $transport_preference = sanitize_input($_POST['transport_preference_q8']); 
-    $message = "";
     
 
     // Debug: Print sanitized input values
@@ -54,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cities = array("palawanattractions", "cebuattractions", "boholattractions", "davaoattractions", "boracayattractions");
 
     foreach ($cities as $city) {
-        $message = "Your travel preferences are as follows: ";
         // print_r($city);
         // echo "<br>";
         // echo "<br>";
@@ -149,8 +147,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } 
 
     if (empty($all_result1)) {
-
-        $message = "No Match. You might be interested with these: ";
         // echo "<p>No Match. You might be interested with these: </p>";
 
         foreach ($cities as $city) {
