@@ -4,7 +4,7 @@
     $user = 'root';
     $pass = '';
     $charset = 'utf8mb4';
-
+    
     // Establishing the PDO connection
     try {
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
